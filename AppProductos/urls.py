@@ -1,5 +1,5 @@
 from django.urls import path
-from AppProductos.views import yerba, lista_yerbas, inicio, yerbas, mates, Bombillas,bolsos, yerba_formulario, about
+from AppProductos.views import yerba, lista_yerbas, inicio, yerbas, mates, Bombillas,bolsos
 
 urlpatterns = [
     path('agrega-yerba/<nombre>/<tamanio>/', yerba, name='yerba'),
@@ -9,6 +9,4 @@ urlpatterns = [
     path('mates/', mates, name='mates' ),
     path('bombillas/', Bombillas, name='Bombillas' ),
     path('bolsos/', bolsos, name='bolsos' ),
-    path('yerba-formulario/', yerba_formulario, name='YerbaFormulario' ),
-    path('about/', about, name='about' ),
 ]

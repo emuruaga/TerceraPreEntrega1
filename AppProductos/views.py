@@ -29,18 +29,3 @@ def Bombillas(req):
 
 def bolsos(req):
     return render(req, 'bolsos.html', {}) 
-
-def about(req):
-    return render(req, 'about.html', {}) 
-
-#formularios
-def yerba_formulario(req):
-    print('method: ', req.method)
-    print('POST: ', req.POST)
-    
-    if req.method == 'POST':
-        nueva_yerba=Yerba(nombre=req.POST['yerba'], tamanio=req.POST['tamanio'])
-        nueva_yerba.save()
-        return render(req, 'inicio.html', {})
-    else:
-        return render (req, 'yerba_formulario.html', {})
