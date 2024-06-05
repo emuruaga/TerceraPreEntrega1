@@ -14,3 +14,18 @@ def yerba(req, nombre, tamanio):
 def lista_yerbas(req):
     lista=Yerba.objects.all()
     return render(req, 'lista_yerbas.html', {'lista_yerbas': lista})    
+
+def inicio(req):
+    return render(req, 'inicio.html', {}) 
+
+def yerbas(req):
+    return render(req, 'yerbas.html', {}) 
+
+def mates(req):
+    return render(req, 'mates.html', {}) 
+
+def Bombillas(req):
+    return render(req, 'bombillas.html', {}) 
+
+def bolsos(req):
+    return render(req, 'bolsos.html', {}) 
