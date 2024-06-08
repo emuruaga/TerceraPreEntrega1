@@ -1,0 +1,11 @@
+{% extends 'yerbas.html' %}
+
+{% block contenidoQueCambia %}
+<p>Buscamos los materiales de los mates que sean: {{ material }} </p>
+
+{% for mate in mates %}
+    <p>Tipo: {{ mate.tipo }} - Material: {{ mate.material }}</p>
+{% empty %}
+    <p>No se encontraron mates con el material especificado.</p>
+{% endfor %}
+{% endblock contenidoQueCambia %}

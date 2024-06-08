@@ -1,0 +1,13 @@
+{% extends 'yerbas.html' %}
+
+
+{% block contenidoQueCambia %}
+
+<form action="{% url 'MateFormulario' %}" method="post"> {% csrf_token %}
+   
+    {{miFormulario.as_p}}
+
+    <button type="submit">Crear</button>
+</form>
+    
+{% endblock contenidoQueCambia %}

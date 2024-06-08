@@ -1,0 +1,14 @@
+{% extends 'yerbas.html' %}
+
+
+{% block contenidoQueCambia %}
+
+<form action="{% url 'BuscarMate' %}" method="get"> 
+
+    <p>Tipo de material del mate:<input type="text" name="material"></p>
+   
+    <button type="submit">Buscar</button>
+
+</form>
+    
+{% endblock contenidoQueCambia %}
