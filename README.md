@@ -6,4 +6,9 @@
 6) Cree la carpeta static e hice los correspondietes cambios.
 7) Cree las views, urls y templates correspondientes
 8) hice varias herencias, aunque no quedó muy funcional (lo arreglo para el final)
-9) 
+9) y por ultimo agregué un formulario, el más sencillo. (para el final agrego todos)
+
+-La página tiene un inicio en el nav, el cuál se puede presionar para volver siempre al inicio.
+-Un formulario arriba en el nav
+-Las tarjetas de abajo llevan a una descripción de lo que contiene cada una
+
