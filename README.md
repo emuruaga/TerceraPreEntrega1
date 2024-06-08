@@ -6,9 +6,10 @@
 6) Cree la carpeta static e hice los correspondietes cambios.
 7) Cree las views, urls y templates correspondientes
 8) hice varias herencias, aunque no quedó muy funcional (lo arreglo para el final)
-9) y por ultimo agregué un formulario, el más sencillo. (para el final agrego todos)
+9) y por ultimo agregué unos formularios, para agregar info y para buscar, en distintos lugares.
 
 -La página tiene un inicio en el nav, el cuál se puede presionar para volver siempre al inicio.
--Un formulario arriba en el nav
+-Un formulario arriba en el nav para cargar información
+-Otro botón para hacer busquedas de la info ya cargada.
 -Las tarjetas de abajo llevan a una descripción de lo que contiene cada una
 
