@@ -1,0 +1,13 @@
+{% extends 'yerbas.html' %}
+
+
+{% block contenidoQueCambia %}
+
+<form action="{% url 'EditaBolsos' id %}" method="post"> {% csrf_token %}
+   
+    {{miFormulario.as_p}}
+
+    <button type="submit">Actualizar</button>
+</form>
+    
+{% endblock contenidoQueCambia %}

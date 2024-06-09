@@ -1,0 +1,32 @@
+{% extends 'yerbas.html' %}
+
+
+{% block contenidoQueCambia %}
+
+
+<h1>Lista de bolsos</h1>
+<ul>
+
+{% for bolso in bolsos  %}
+    <li>
+        {{bolso}}
+    </li>
+    <div style="display: flex; column-gap: 5px;">
+        <form action=" {% url 'EliminarBolso' bolso.id %} " method="post" > {% csrf_token %}
+
+            <button type="submit">Eliminar</button>
+        </form>  
+        <button>
+            <a href="{% url 'EditaBolsos' bolso.id %}"> Actualizar</a>
+        </button>
+    </div>
+{% endfor %}
+
+<a href=" {% url 'CreaBolsos' %}"> Crear un Bolso</a>
+    
+
+</ul>
+
+
+    
+{% endblock contenidoQueCambia %}

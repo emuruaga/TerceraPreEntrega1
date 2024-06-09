@@ -2,7 +2,8 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from .models import Yerba
 from .models import Mate
-from .forms import MateFormulario
+from .models import Bolso
+from .forms import MateFormulario, BolsoFormulario
 
 # Create your views here.
 def yerba(req, nombre, tamanio):
@@ -87,3 +88,55 @@ def buscar_material(req):
         return render (req, 'resultadoBusqueda.html', {'mate': mate, 'material': material})
     else:
         return render(req, 'inicio.html',{'messege': 'No es correcto el dato'})'''
+#Leer registro
+def lista_bolsos(req):
+    mis_bolsos=Bolso.objects.all()
+    return render(req, 'leer_bolsos.html', {'bolsos': mis_bolsos})
+
+#Crear Registros
+def crea_bolso(req):
+    if req.method=='POST':
+        miFormulario=BolsoFormulario(req.POST)
+        if miFormulario.is_valid():
+            data=miFormulario.cleaned_data
+        
+            nuevo_bolso=Bolso(material=data['material'], color=data['color'])
+            nuevo_bolso.save()
+            return render(req, 'bolsos.html', {'messege': 'Nuevo bolso creado con éxito'}) #Acá poner otra página que diga agregado correctamente!!!!!      
+        else:
+            return render(req, 'bolso_formulario.html', {'messege': 'Datos inválidos'})
+    else:
+        miFormulario=BolsoFormulario()
+        return render(req, 'bolso_formulario.html', {'miFormulario': miFormulario})
+    
+#Eliminar registros
+def eliminar_bolso(req, id):
+    if req.method=='POST':
+        bolso=Bolso.objects.get(id=id)
+        bolso.delete()
+        mis_bolsos=Bolso.objects.all()
+    return render(req, 'leer_bolsos.html', {'bolsos': mis_bolsos})
+
+#Editar un registro
+def editar_bolso(req,id):
+    
+    if req.method=='POST':
+        miFormulario=BolsoFormulario(req.POST)
+        if miFormulario.is_valid():
+            data=miFormulario.cleaned_data
+            bolso=Bolso.objects.get(id=id)
+            bolso.material=data['material']
+            bolso.color=data['color']
+            bolso.save()
+        
+            return render(req, 'bolsos.html', {'messege': 'Bolso modificado con éxito'}) #Acá poner otra página que diga agregado correctamente!!!!!      
+        else:
+            return render(req, 'bolso_formulario.html', {'messege': 'Datos inválidos'})
+    else:
+        bolso=Bolso.objects.get(id=id)
+        miFormulario=BolsoFormulario(initial={
+            'material': bolso.material,
+            'color': bolso.color
+        })
+        return render(req, 'editar_bolso.html', {'miFormulario': miFormulario, 'id': bolso.id})
+    
