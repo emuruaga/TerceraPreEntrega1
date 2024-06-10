@@ -1,0 +1,36 @@
+{% extends 'yerbas.html' %}
+
+
+{% block contenidoQueCambia %}
+
+
+<h1>Lista de Yerbas</h1>
+
+<ul>
+
+{% for yerba in yerbas  %}
+    <li>
+        <a href="{% url 'DetalleYerba' yerba.id %}">
+            {{yerba}}
+        </a>
+    </li>
+
+    <div style="display: flex; column-gap: 5px;">
+        <button>
+            <a href="{% url 'ActualizaYerba' yerba.id %}">Actualizar</a>
+        </button>
+
+        <button>
+            <a href="{% url 'EliminaYerba' yerba.id %}">Eliminar</a>
+
+        </button>
+
+        
+    </div>
+{% endfor %}
+
+</ul>
+
+<a href="{% url 'CreaYerba' %}">Agregar Yerba</a>
+    
+{% endblock contenidoQueCambia %}

@@ -5,7 +5,7 @@ from AppProductos.views import (
     yerba_formulario,mate_formulario,
     busqueda_mate, buscar_material,
     lista_bolsos, crea_bolso, eliminar_bolso,
-    editar_bolso
+    editar_bolso, YerbaList, YerbaCreate, YerbaDatail, YerbaDelete, YerbaUpdate
     )
 
 urlpatterns = [
@@ -24,4 +24,10 @@ urlpatterns = [
     path('crea-bolsos/', crea_bolso, name='CreaBolsos' ),
     path('elimina-bolsos/<int:id>', eliminar_bolso, name='EliminarBolso' ),
     path('edita-bolsos/<int:id>', editar_bolso, name='EditaBolsos' ),
+    path('lista-yerba/', YerbaList.as_view(), name='ListaYerbas' ),
+    path('detalle-yerba/<pk>', YerbaDatail.as_view(), name='DetalleYerba' ),
+    path('crea-yerba/', YerbaCreate.as_view(), name='CreaYerba' ),
+    path('actualiza-yerba/<pk>', YerbaUpdate.as_view(), name='ActualizaYerba' ),
+    path('elimmina-yerba/<pk>', YerbaDelete.as_view(), name='EliminaYerba' ),
 ]
+

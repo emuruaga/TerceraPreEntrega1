@@ -4,6 +4,9 @@ from .models import Yerba
 from .models import Mate
 from .models import Bolso
 from .forms import MateFormulario, BolsoFormulario
+from django.views.generic import ListView
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import DeleteView, UpdateView, CreateView
 
 # Create your views here.
 def yerba(req, nombre, tamanio):
@@ -140,3 +143,30 @@ def editar_bolso(req,id):
         })
         return render(req, 'editar_bolso.html', {'miFormulario': miFormulario, 'id': bolso.id})
     
+class YerbaList(ListView):
+    model= Yerba
+    template_name='yerba_list.html'
+    context_object_name='yerbas'
+    
+class YerbaDatail(DeleteView):
+    model= Yerba
+    template_name='yerba_detail.html'
+    context_object_name='yerba'
+    
+class YerbaCreate(CreateView):
+    model= Yerba
+    template_name='yerba_create.html'
+    fields=['nombre', 'tamanio']
+    success_url='/app-productos/'
+    
+class YerbaUpdate(UpdateView):
+    model= Yerba
+    template_name='yerba_update.html'
+    fields=('__all__')
+    success_url='/app-productos/'
+    context_object_name='yerba'
+    
+class YerbaDelete(DeleteView):
+    model= Yerba
+    template_name='yerba_delete.html'
+    success_url='/app-productos/'
